@@ -1,5 +1,13 @@
 # Analysis of Wind Turbine Failure
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [EDA Summary](#eda-summary)
+- [Sample Data](#sample-data)
+- [Usage](#usage)
+- [Files / Notebooks](#files--notebooks)
+- [Contact](#contact)
+
 ## Project Overview
 This project investigates the operational parameters of wind turbines to understand the conditions contributing to equipment failure. Using sensor and environmental data such as wind speed, power output, internal temperatures, and failure status, the analysis aims to identify key factors linked to turbine failures. The insights generated can support predictive maintenance and improve turbine reliability.
 
