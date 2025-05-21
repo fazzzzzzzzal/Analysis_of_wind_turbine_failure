@@ -2,10 +2,10 @@
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [EDA Summary](#eda-summary)
-- [Sample Data](#sample-data)
-- [Usage](#usage)
-- [Files / Notebooks](#files--notebooks)
+- [EDA Summary](#Exploratory-Data-Analysis-(EDA)-Summary)
+- [Sample Data](#Sample-Data-Structure-(Dummy-Data))
+- [Usage](#Usage-Instructions)
+- [Next Steps](#Next-Steps)
 - [Contact](#contact)
 
 ## Project Overview
