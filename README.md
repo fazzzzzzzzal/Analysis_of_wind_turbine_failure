@@ -1,58 +1,84 @@
-# # Analysis of Wind Turbine Failure
+# Analysis of Wind Turbine Failure
 
 ## Project Overview
-This project performs an Exploratory Data Analysis (EDA) on wind turbine operational data to identify conditions contributing to turbine failure. The dataset includes sensor and environmental parameters such as wind speed, power output, temperatures, and failure status. The analysis aims to extract key insights for predictive maintenance to improve turbine reliability and operational uptime.
+This project investigates the operational parameters of wind turbines to understand the conditions contributing to equipment failure. Using sensor and environmental data such as wind speed, power output, internal temperatures, and failure status, the analysis aims to identify key factors linked to turbine failures. The insights generated can support predictive maintenance and improve turbine reliability.
 
-## Tools & Technologies
-- Python (pandas, numpy, matplotlib, seaborn)
-- SQL (MySQL queries for data extraction and preprocessing)
-- Tableau (for dashboard visualizations)
-
-## Data Preprocessing
-- Deduplication of records with no duplicates found
-- Standardization of data (removal of extra spaces, type conversion)
-- Null-value handling (no missing values present)
-- Column cleanup (e.g., removal of unnecessary columns like Row_Num)
-
-## Key Findings from EDA
+## Exploratory Data Analysis (EDA) Summary
 
 ### 1. Failure Distribution
-- Dataset is imbalanced, with fewer failure instances but crucial for identifying failure conditions.
-- Failure rate was calculated to assess frequency of breakdowns.
+- The dataset is imbalanced, with fewer failure instances compared to non-failure cases.
+- Failure records reveal important patterns that help isolate operational conditions leading to turbine failure.
+- The `Failure_status` column clearly distinguishes operational turbines from failed ones.
+- Overall failure rate was calculated to assess the frequency of breakdowns under different conditions.
 
-### 2. Influential Features
-- **Power Output:** Failure rates spike at very low (<1) and very high (>6) power levels.
-- **Gear Oil Temperature:** Failures only when temperature > 90°C, indicating overheating issues.
-- **Gear Box Inlet Temperature:** 100% failure when temperature exceeds 50°C, a critical predictor.
-- **Ambient and Nacelle Temperatures:** Indirectly influence failure under specific conditions, e.g., ambient > 20°C combined with moderate power output leads to failures.
+### 2. Key Influential Features
+
+- **Power Output:**
+  - Power output ranges from very low (<1) to very high (>6).
+  - Very high or very low power values correspond to a higher failure rate.
+  - Operating at extreme power outputs may stress the turbine, causing failure.
+
+- **Gear Oil Temperature:**
+  - Failures occurred only when gear oil temperature was high (>90°C).
+  - High temperature indicates overheating and possible lubrication failure.
+
+- **Gear Box Inlet Temperature:**
+  - 100% failure rate observed when temperature exceeded 50°C.
+  - Useful as a preventive warning sign.
+
+- **Ambient and Nacelle Temperatures:**
+  - High ambient temperature alone does not strongly correlate with failure.
+  - However, combined with moderate power (1-2), failure rate reaches 100%.
 
 ### 3. Wind Speed & Other Factors
-- Wind speed, rotor speed, yaw angle, and wind direction showed no strong direct correlation with failures.
+- Wind speed, rotor speed, yaw angle, and wind direction did not show strong correlations with failure.
 
-### 4. Interaction Effects
-- Compound conditions such as moderate power + high ambient temperature or high gear oil + inlet temperatures lead to 100% failure rates, highlighting multifactorial causes.
+### 4. Feature Interactions
+- Compound risk conditions identified:
+  - Moderate power (1–2) + High ambient temperature (>20°C) → 100% failure.
+  - High Gear Box Inlet Temperature + High Gear Oil Temperature → 100% failure.
+  
+Failures are multifactorial and often result from extreme conditions combined.
 
-## Summary of Analysis Steps
-| Step                          | Description                               | Action/Observation                                 |
-|-------------------------------|------------------------------------------|--------------------------------------------------|
-| Data Preprocessing            | Cleaning and type conversion              | Created clean dataset with consistent types      |
-| Identifying Duplicates        | Duplicate row check                       | No duplicates found                               |
-| Standardizing Data            | Removing spaces, type conversions         | Standardized Wind_speed, Power, and date columns |
-| Null Values                  | Null/missing values check                  | No missing data found                             |
-| Column Cleanup               | Removing unwanted columns                   | Removed Row_Num after duplicate check            |
-| Statistical Moments          | Calculated mean, variance, skewness       | Analyzed Wind_speed, Power, temperatures          |
-| Failure Status Analysis      | Grouped by failure status                   | Found critical failure indicators in power & temps|
+---
 
-## Conclusion
-Power output and gear-related temperatures (Gear Oil and Gear Box Inlet) are key predictors of wind turbine failure. Monitoring these variables, especially temperature metrics, is essential for predictive maintenance and operational efficiency. The analysis reveals multifactorial failure causes, emphasizing the need for continuous sensor monitoring and potential classification models to predict failures in future work.
+## Sample Data Structure (Dummy Data)
 
-## How to Use This Repo
-- Run Python scripts in `/scripts` for data cleaning and EDA
-- Execute SQL queries from `/sql` folder to extract and preprocess turbine data
-- Explore dashboards in `/tableau` folder for interactive visualization of failure trends and KPIs
-- Refer to `/data` for a sample dataset (anonymized and size-reduced)
+| date       | Wind_speed | Power  | Nacelle_ambient_temperature | Generator_bearing_temperature | Gear_oil_temperature | Ambient_temperature | Rotor_Speed | Nacelle_temperature | Bearing_temperature | Generator_speed | Yaw_angle | Wind_direction | Wheel_hub_temperature | Gear_box_inlet_temperature | Failure_status |
+|------------|------------|--------|-----------------------------|------------------------------|----------------------|---------------------|-------------|---------------------|---------------------|-----------------|-----------|----------------|-----------------------|----------------------------|----------------|
+| 01-01-2023 | 16.85      | 6.78   | -56.85                      | 129.90                       | 97.78                | 12.38               | 21.18       | 45.34               | 39.5                | 1508.96         | 168.80    | 105.59         | 109.39                | 44.26                      | Failure        |
+| 08-01-2023 | 42.78      | 5.42   | 3.64                        | 56.35                        | 47.57                | 22.36               | 217.85      | 84.21               | 71.4                | 1271.36         | 12.54     | 80.81          | -59.11                | 55.50                      | No_failure     |
+| 15-01-2023 | 32.93      | 6.57   | -28.56                      | 45.93                        | 54.54                | 73.62               | 221.66      | 62.45               | 39.5                | 2252.94         | 94.15     | 15.76          | 104.58                | 89.69                      | No_failure     |
+
+*Note: This is dummy data for illustration only. The actual dataset is confidential and not publicly shared.*
+
+---
+
+## Usage Instructions
+
+- The raw dataset contains sensitive information and is **not included** in this repository.
+- You can run the Jupyter notebooks provided in the `/notebooks` folder for analysis using your own data.
+- SQL scripts for data preprocessing are available in the `/sql` folder.
+- A Power BI file for dashboard visualization will be added soon.
+
+---
+
+## Next Steps
+
+- Use the EDA insights to build predictive models for failure detection.
+- Monitor critical temperature features and power output in real-time systems.
+- Incorporate this analysis into maintenance scheduling for wind turbines.
+- Extend the project by adding classification models and more advanced analytics.
+
+---
 
 ## Contact
-Mohamed Fazal  
-[LinkedIn](https://www.linkedin.com/in/mohamed-fazal-a-f-b94737285)  
-Email: fazalmohamedstb2020@gmail.com
+
+For any questions, feel free to contact:  
+**Fazal Mohamed**  
+Email: fazalmohamedstb2020@gmail.com  
+LinkedIn: [linkedin.com/in/mohamed-fazal-a-f-b94737285](https://www.linkedin.com/in/mohamed-fazal-a-f-b94737285)
+
+---
+
+
