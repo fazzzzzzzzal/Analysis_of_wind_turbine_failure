@@ -1,30 +1,42 @@
 # Analysis of Wind Turbine Failure
 
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform](https://img.shields.io/badge/Platform-Jupyter%20%7C%20SQL%20%7C%20PowerBI-lightgrey)
+![Repo Size](https://img.shields.io/github/repo-size/fazzzzzzzzal/Analysis_of_wind_turbine_failure)
+![Last Commit](https://img.shields.io/github/last-commit/fazzzzzzzzal/Analysis_of_wind_turbine_failure)
+
+---
+
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [EDA Summary](#Exploratory-Data-Analysis-(EDA)-Summary)
-- [Sample Data](#Sample-Data-Structure-(Dummy-Data))
-- [Usage](#Usage-Instructions)
-- [Next Steps](#Next-Steps)
+- [EDA Summary](#exploratory-data-analysis-eda-summary)
+- [Sample Data](#sample-data-structure-dummy-data)
+- [Usage](#usage-instructions)
+- [Notebooks and Scripts](#notebooks-and-scripts)
+- [Next Steps](#next-steps)
 - [Contact](#contact)
 
+---
+
 ## Project Overview
+
 This project investigates the operational parameters of wind turbines to understand the conditions contributing to equipment failure. Using sensor and environmental data such as wind speed, power output, internal temperatures, and failure status, the analysis aims to identify key factors linked to turbine failures. The insights generated can support predictive maintenance and improve turbine reliability.
 
-## Exploratory Data Analysis (EDA) Summary
+---
+
+## Exploratory Data Analysis EDA Summary
 
 ### 1. Failure Distribution
 - The dataset is imbalanced, with fewer failure instances compared to non-failure cases.
-- Failure records reveal important patterns that help isolate operational conditions leading to turbine failure.
 - The `Failure_status` column clearly distinguishes operational turbines from failed ones.
-- Overall failure rate was calculated to assess the frequency of breakdowns under different conditions.
+- Failure records reveal important patterns that help isolate operational conditions leading to turbine failure.
 
 ### 2. Key Influential Features
 
 - **Power Output:**
-  - Power output ranges from very low (<1) to very high (>6).
   - Very high or very low power values correspond to a higher failure rate.
-  - Operating at extreme power outputs may stress the turbine, causing failure.
+  - Operating at extreme power outputs may stress the turbine.
 
 - **Gear Oil Temperature:**
   - Failures occurred only when gear oil temperature was high (>90°C).
@@ -32,11 +44,10 @@ This project investigates the operational parameters of wind turbines to underst
 
 - **Gear Box Inlet Temperature:**
   - 100% failure rate observed when temperature exceeded 50°C.
-  - Useful as a preventive warning sign.
 
 - **Ambient and Nacelle Temperatures:**
   - High ambient temperature alone does not strongly correlate with failure.
-  - However, combined with moderate power (1-2), failure rate reaches 100%.
+  - However, combined with moderate power (1–2), failure rate reaches 100%.
 
 ### 3. Wind Speed & Other Factors
 - Wind speed, rotor speed, yaw angle, and wind direction did not show strong correlations with failure.
@@ -44,13 +55,13 @@ This project investigates the operational parameters of wind turbines to underst
 ### 4. Feature Interactions
 - Compound risk conditions identified:
   - Moderate power (1–2) + High ambient temperature (>20°C) → 100% failure.
-  - High Gear Box Inlet Temperature + High Gear Oil Temperature → 100% failure.
+  - High Gear Box Inlet Temp + High Gear Oil Temp → 100% failure.
   
 Failures are multifactorial and often result from extreme conditions combined.
 
 ---
 
-## Sample Data Structure (Dummy Data)
+## Sample Data Structure Dummy Data
 
 | date       | Wind_speed | Power  | Nacelle_ambient_temperature | Generator_bearing_temperature | Gear_oil_temperature | Ambient_temperature | Rotor_Speed | Nacelle_temperature | Bearing_temperature | Generator_speed | Yaw_angle | Wind_direction | Wheel_hub_temperature | Gear_box_inlet_temperature | Failure_status |
 |------------|------------|--------|-----------------------------|------------------------------|----------------------|---------------------|-------------|---------------------|---------------------|-----------------|-----------|----------------|-----------------------|----------------------------|----------------|
@@ -71,6 +82,16 @@ Failures are multifactorial and often result from extreme conditions combined.
 
 ---
 
+## Notebooks and Scripts
+
+| File | Description |
+|------|-------------|
+| [`/notebooks/wind_turbine_eda.ipynb`](https://github.com/fazzzzzzzzal/Analysis_of_wind_turbine_failure/blob/main/notebooks/wind_turbine_eda.ipynb) | Exploratory Data Analysis of wind turbine dataset |
+| [`/sql/wind_turbine_failure.sql`](https://github.com/fazzzzzzzzal/Analysis_of_wind_turbine_failure/blob/main/sql/wind_turbine_failure.sql) | SQL script to preprocess turbine failure data |
+| Power BI file (coming soon) | Interactive dashboard for failure monitoring |
+
+---
+
 ## Next Steps
 
 - Use the EDA insights to build predictive models for failure detection.
@@ -84,8 +105,8 @@ Failures are multifactorial and often result from extreme conditions combined.
 
 For any questions, feel free to contact:  
 **Fazal Mohamed**  
-Email: fazalmohamedstb2020@gmail.com  
-LinkedIn: [linkedin.com/in/mohamed-fazal-a-f-b94737285](https://www.linkedin.com/in/mohamed-fazal-a-f-b94737285)
+📧 Email: fazalmohamedstb2020@gmail.com  
+🔗 LinkedIn: [linkedin.com/in/mohamed-fazal-a-f-b94737285](https://www.linkedin.com/in/mohamed-fazal-a-f-b94737285)
 
 ---
 
